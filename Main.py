@@ -20,5 +20,5 @@ def info():
         '         \/   \/\/            \/      \/              \/  \n'
 
     )
-    print(f"KeySmith {__version__}\n{module_description}")
+    print(f"KeySmith {__version__}\n{module_description} \n\n\n")
     #print(f"{Fore.CYAN}{Fore.YELLOW}Warning : /Only designed as a project, abuse is not my problem/{Fore.YELLOW}{Fore.RESET}")
