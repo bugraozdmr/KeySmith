@@ -2,11 +2,11 @@ from colorama import Fore, Style
 
 
 class GetInfo:
-    def __init__(self, name=None, petname=None, city=None, team=None, county=None, birthday=None):
+    def __init__(self, name=None, petname=None, city=None, team=None, country=None, birthday=None):
         self.name = name
         self.petname = petname
         self.city = city
-        self.county = county
+        self.country = country
         self.team = team
         self.birthday = birthday
 
@@ -15,7 +15,7 @@ class GetInfo:
             'petname': self.petname,
             'city': self.city,
             'team': self.team,
-            'county': self.county,
+            'country': self.country,
             'birthday': self.birthday
         }
 
@@ -36,15 +36,15 @@ class GetInfo:
         if (city_name is not None):
             self.city = city_name.strip()
 
-        county_name = input("Name of the county : ")
-        if (county_name is not None):
-            self.county = county_name.strip()
+        country_name = input("Name of the country : ")
+        if (country_name is not None):
+            self.country = country_name.strip()
 
         team_name = input("Name of the team : ")
         if (team_name is not None):
             self.team = team_name.strip()
 
-        birthday_d = input("arget's birthday : (if it is known)")
+        birthday_d = input("target's birthday (if it is known /dd.mm.yyyy/) :")
         if (birthday_d is not None):
             self.birthday = birthday_d.strip()
 
@@ -52,7 +52,7 @@ class GetInfo:
         self.data['name'] = self.name
         self.data['petname'] = self.petname
         self.data['city'] = self.city
-        self.data['county'] = self.county
+        self.data['country'] = self.country
         self.data['birthday'] = self.birthday
         self.data['team'] = self.team
 

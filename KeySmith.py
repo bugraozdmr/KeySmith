@@ -19,26 +19,50 @@ class KeySmith:
     def Generate(self):
         # we have our dict
 
-        flag = 0
-
-        with open("Results/MostPopulerPasswordsList.txt", "r") as file:
-            line_count = sum(1 for line in file)
-
-        quer = input(f"Would you want to add {line_count} lines of most used password to your result (Y/N)")
-        if quer == 'Y' or quer == 'y' : flag = 1
-
-
-
         current_date_t = datetime.now().strftime("%d.%m.%Y")
-        if (self.dict['name'] is not None):
-            file_name =  f"{self.dict['name']}-{current_date_t}"
+        if (self.dict['name'] is not None and self.dict['name'] != ""):
+            file_name =  f"{self.dict['name']}-{current_date_t}.txt"
         else :
-            file_name = f"{current_date_t}-{random.randint(1, 100)}"
+            file_name = f"{current_date_t}-{random.randint(1, 100)}.txt"
+
+
+
+        # Steps
+        # Ask about would like to continue
+        # Continue
+        input_count=0
+        if(self.dict['name'] != None and self.dict['name'] != ""):
+            input_count += 1
+        if (self.dict['petname'] != None and self.dict['petname'] != ""):
+            input_count += 1
+        if (self.dict['city'] != None and self.dict['city'] != ""):
+            input_count += 1
+        if (self.dict['country'] != None and self.dict['country'] != ""):
+            input_count += 1
+        if (self.dict['team'] != None and self.dict['team'] != ""):
+            input_count += 1
+
+        # birthday exist (?)
+        b_exist = 0
+        if(self.dict['birthday'] != None and self.dict['birthday'] != ""):
+            b_exist = 1
+            if(len(self.dict['birthday'].split('.')) != 3):
+                b_exist = 0
+
+        if(b_exist == 1):
+            mult = 3
+        else:
+            mult = 0
+
+        total_comb = (input_count*2*(6+mult))+(input_count*2*(6+mult))+((6+mult)*10*input_count*2)+2 + 16
+
+        # 16 -- (?)
+        check = input(f"Are you sure want to go on ? (There will "
+                      f"be {total_comb}"
+                      f" passwords generated)")
 
         CT = CraftingTable()
-
-        # coming ...
-        CT.Craft(f"Results/{file_name}",)
+        CT.Craft(f"Results/{file_name}",self.dict,total_comb)
 
 
 
